@@ -1,0 +1,13 @@
+
+const cron = require("node-cron");
+const Lead = require("../models/Lead");
+
+cron.schedule("*/5 * * * *", async () => {
+  const leads = await Lead.find({ status: "Verified", syncedToCRM: false });
+
+  for (let lead of leads) {
+    console.log(`[CRM Sync] Sending verified lead ${lead.name} to Sales Team...`);
+    lead.syncedToCRM = true;
+    await lead.save();
+  }
+});
