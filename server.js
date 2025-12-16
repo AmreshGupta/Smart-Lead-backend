@@ -10,7 +10,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect("mongodb://127.0.0.1:27017/smartlead")
+mongoose.connect("mongodb+srv://kumargupta5424_db_user:Gulabo%409119@cluster0.h5lf5i2.mongodb.net/mydb")
   .then(() => console.log("MongoDB connected"))
   .catch(err => console.error(err));
 
